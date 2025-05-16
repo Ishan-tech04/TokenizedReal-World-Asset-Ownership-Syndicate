@@ -1,1 +1,0 @@
-# TokenizedReal-World-Asset-Ownership-Syndicate

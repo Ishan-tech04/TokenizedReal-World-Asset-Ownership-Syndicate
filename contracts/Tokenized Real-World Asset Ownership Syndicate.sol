@@ -105,6 +105,18 @@ contract Project is ERC1155, Ownable, ReentrancyGuard {
         
         emit AssetStatusChanged(assetId, isActive);
     }
+
+    /**
+     * @dev Allows the owner to update the price per share of an asset
+     * @param assetId ID of the asset to update
+     * @param newPrice New price per share in wei
+     */
+    function updatePricePerShare(uint256 assetId, uint256 newPrice) external onlyOwner {
+        require(assets[assetId].totalShares > 0, "Asset does not exist");
+        require(newPrice > 0, "Price must be greater than zero");
+
+        assets[assetId].pricePerShare = newPrice;
+    }
     
     /**
      * @dev Returns the number of assets created
